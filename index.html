@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Productivity App</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">✓</div>
+            <span>TaskFlow</span>
+        </div>
+
+        <nav>
+            <button class="nav-item active" data-filter="all">
+                <span>🏠</span>
+                Dashboard
+            </button>
+
+            <button class="nav-item" data-filter="all">
+                <span>📋</span>
+                All Tasks
+            </button>
+
+            <button class="nav-item" data-filter="pending">
+                <span>⏳</span>
+                Pending
+            </button>
+
+            <button class="nav-item" data-filter="completed">
+                <span>✅</span>
+                Completed
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>Stay focused.<br>Get things done.</p>
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <!-- Header -->
+        <header class="header">
+
+            <div>
+                <p class="date" id="currentDate"></p>
+                <h1>Good morning! 👋</h1>
+                <p class="subtitle">Let's make today productive.</p>
+            </div>
+
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+
+        </header>
+
+
+        <!-- Statistics -->
+        <section class="stats">
+
+            <div class="stat-card">
+                <div class="stat-icon blue">📋</div>
+                <div>
+                    <span>Total Tasks</span>
+                    <strong id="totalTasks">0</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon green">✓</div>
+                <div>
+                    <span>Completed</span>
+                    <strong id="completedTasks">0</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon orange">⏳</div>
+                <div>
+                    <span>Pending</span>
+                    <strong id="pendingTasks">0</strong>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Progress -->
+        <section class="progress-card">
+
+            <div class="progress-top">
+                <div>
+                    <h3>Today's Progress</h3>
+                    <p>Keep going, you're doing great!</p>
+                </div>
+
+                <strong id="progressPercent">0%</strong>
+            </div>
+
+            <div class="progress-bar">
+                <div id="progressFill"></div>
+            </div>
+
+        </section>
+
+
+        <!-- Task Section -->
+        <section class="task-section">
+
+            <div class="section-header">
+                <div>
+                    <h2 id="taskHeading">My Tasks</h2>
+                    <p>Manage your daily tasks</p>
+                </div>
+
+                <button class="add-btn" id="openModal">
+                    <span>+</span> Add Task
+                </button>
+            </div>
+
+
+            <!-- Search -->
+            <div class="search-box">
+                <span>🔍</span>
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search tasks..."
+                >
+            </div>
+
+
+            <!-- Tasks -->
+            <div id="taskList" class="task-list"></div>
+
+            <div id="emptyState" class="empty-state">
+                <div>📝</div>
+                <h3>No tasks yet</h3>
+                <p>Add your first task and start being productive.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- Add Task Modal -->
+<div class="modal" id="taskModal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <div>
+                <h2 id="modalTitle">Add New Task</h2>
+                <p>Create a task for your day.</p>
+            </div>
+
+            <button id="closeModal">×</button>
+        </div>
+
+
+        <form id="taskForm">
+
+            <label>Task Title</label>
+            <input
+                type="text"
+                id="taskTitle"
+                placeholder="e.g. Complete JavaScript assignment"
+                required
+            >
+
+
+            <div class="form-row">
+
+                <div>
+                    <label>Category</label>
+
+                    <select id="taskCategory">
+                        <option value="Study">📚 Study</option>
+                        <option value="Personal">👤 Personal</option>
+                        <option value="Work">💼 Work</option>
+                        <option value="Other">📌 Other</option>
+                    </select>
+                </div>
+
+
+                <div>
+                    <label>Priority</label>
+
+                    <select id="taskPriority">
+                        <option value="Low">Low</option>
+                        <option value="Medium" selected>Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+
+            </div>
+
+
+            <label>Due Date</label>
+
+            <input
+                type="date"
+                id="taskDate"
+            >
+
+
+            <button class="submit-btn" type="submit">
+                Add Task
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
